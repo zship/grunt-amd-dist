@@ -1,7 +1,7 @@
-grunt-amd-doc
+grunt-amd-dist
 =============
 
-grunt-amd-doc is a [grunt](http://gruntjs.com/) task to build JavaScript
+grunt-amd-dist is a [grunt](http://gruntjs.com/) task to build JavaScript
 projects which use the AMD format.
 
 
@@ -88,7 +88,7 @@ do not want to use an AMD loader. With that in mind, here's what grunt-amd-dist
 provides:
 
 1. Can specify files instead of module names, and use grunt's
-   (globbing)[https://github.com/gruntjs/grunt/blob/0.3-stable/docs/api_file.md#gruntfileexpand]
+   [globbing](https://github.com/gruntjs/grunt/blob/0.3-stable/docs/api_file.md#gruntfileexpand)
    to cut down on typing included files explicitly.
 2. Built script can export an object containing all included modules, for use
    outside AMD loaders.

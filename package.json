@@ -2,7 +2,7 @@
 	"name": "grunt-amd-dist",
 	"title": "grunt-amd-dist",
 	"description": "Builder for AMD-based libraries",
-	"version": "0.1.0",
+	"version": "0.1.1",
 	"homepage": "https://github.com/zship/grunt-amd-dist",
 	"author": "Zach Shipley <zach@zachshipley.com>",
 	"repository": {
