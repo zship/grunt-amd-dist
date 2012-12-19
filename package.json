@@ -10,7 +10,9 @@
 		"url": "https://github.com/zship/grunt-amd-dist"
 	},
 	"license": "MIT",
-	"dependencies": {},
+	"dependencies": {
+		"grunt": "0.3.x"
+	},
 	"keywords": [
 		"gruntplugin",
 		"amd"
