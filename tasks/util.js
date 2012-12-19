@@ -2,7 +2,7 @@
 
 var fs = require('fs');
 var path = require('path');
-var grunt = require('grunt');
+var grunt = require('grunt/lib/grunt.js');
 var _ = grunt.utils._;
 
 
