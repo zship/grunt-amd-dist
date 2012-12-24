@@ -56,6 +56,8 @@ module.exports = function(grunt) {
 		config = _.extend(_.clone(rjsconfig), config);
 
 		requirejs.optimize(config, function(buildResponse) {
+			grunt.log.writeln(buildResponse);
+
 			if (!config.standalone) {
 				done();
 				return;
@@ -71,7 +73,16 @@ module.exports = function(grunt) {
 				.map(function(file) {
 					return util.fileToModuleName(file, rjsconfig);
 				})
+				.filter(function(file) {
+					//a plugin, not a file
+					return file.search(/!/g) === -1;
+				})
 				.value();
+
+			if (config.standalone) {
+				//take out almond.js reference
+				deps = deps.slice(1);
+			}
 
 
 			var appendString = '\n\n/*\n';

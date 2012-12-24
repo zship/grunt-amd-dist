@@ -30,7 +30,7 @@ var util = {
 
 	fileToModuleName: function(filePath, rjsconfig) {
 		var baseUrl = rjsconfig.baseUrl;
-		var absolutePath = filePath;
+		var absolutePath = path.normalize(filePath);
 
 		//console.log('');
 		//console.log(absolutePath);
