@@ -3,7 +3,9 @@
 var fs = require('fs');
 var path = require('path');
 var grunt = require('grunt/lib/grunt.js');
+var mixin = require('mout/object/deepMixIn');
 var _ = grunt.utils._;
+var Deferred = require('deferreds.js/Deferred');
 
 
 var util = {
@@ -25,6 +27,32 @@ var util = {
 		});
 
 		return _.uniq(files);
+	},
+
+
+	loadConfig: function(config) {
+		var deferred = new Deferred();
+
+		if (config.mainConfigFile) {
+			if (!fs.existsSync(config.mainConfigFile)) {
+				throw new Error('requirejs config: mainConfigFile property: file cannot be found');
+			}
+
+			var requirejs = require('./lib/r.js');
+			requirejs.config({
+				baseUrl: __dirname,
+				nodeRequire: require
+			});
+
+			requirejs(['./lib/parse'], function(parse) {
+				var mainConfig = parse.findConfig(grunt.file.read(config.mainConfigFile)).config;
+				deferred.resolve(mixin({}, mainConfig, config));
+			});
+			return deferred.promise();
+		}
+
+		deferred.resolve(config);
+		return deferred.promise();
 	},
 
 
