@@ -60,7 +60,11 @@ dist: {
 `requirejs` is a standard [r.js configuration
 object](https://github.com/jrburke/r.js/blob/master/build/example.build.js).
 grunt-amd-dist uses `basePath`, `paths`, and `packages` (all optional) to
-transform file names to AMD module names.
+transform file names to AMD module names.  If the `mainConfigFile`
+property is given, the configuration in that file will be mixed-in to the
+`requirejs` property with a **lower** precedence (that is, in the case of a
+conflicting configuration property, `requirejs` will always "win" against
+`mainConfigFile`).
 
 Once these options are in place, `grunt dist` will run grunt-amd-dist.
 
