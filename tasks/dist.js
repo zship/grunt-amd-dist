@@ -56,7 +56,7 @@ module.exports = function(grunt) {
 		config = _.extend(_.clone(rjsconfig), config);
 
 		requirejs.optimize(config, function(buildResponse) {
-			grunt.log.writeln(buildResponse);
+			//grunt.log.writeln(buildResponse);
 
 			if (!config.standalone) {
 				done();
