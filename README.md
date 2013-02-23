@@ -27,8 +27,8 @@ checking that "amd-dist" is under "Available tasks".
 Usage
 -----
 
-grunt-amd-dist reads two sections of your config: `dist` and `requirejs`. `dist`
-can contain these properties (example from
+grunt-amd-dist reads two sections of your config: `amd-dist` and `requirejs`.
+`amd-dist` can contain these properties (example from
 [deferreds.js](https://github.com/zship/deferreds.js)):
 
 ```js
