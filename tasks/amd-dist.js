@@ -10,7 +10,7 @@ module.exports = function(grunt) {
 	var partial = require('mout/function/partial');
 
 
-	grunt.registerTask('dist', 'Runs requirejs optimizer', function() {
+	grunt.registerTask('amd-dist', 'Runs requirejs optimizer', function() {
 		var config = grunt.config.get(this.name);
 		var done = this.async();
 
@@ -20,21 +20,11 @@ module.exports = function(grunt) {
 
 
 			function(rjsconfig) {
-				['include', 'exclude', 'excludeBuilt', 'excludeShallow'].forEach(function(name) {
-					config[name] = util.expand(config[name]).map(function(file) {
-						return util.fileToModuleName(file, rjsconfig);
-					});
+				var files = grunt.file.expand({filter: 'isFile'}, config.files).map(function(f) {
+					return util.fileToModuleName(f, rjsconfig);
 				});
 
-				config.include = _.difference(config.include, config.exclude);
-
-				//console.log(JSON.stringify(config.include, false, 4));
-
-				//'exclude' is a requirejs property meaning 'exclude a module and its
-				//dependencies'. We used the name for our own purpose, now reassign it
-				//to align with requirejs' meaning.
-				config.exclude = _.uniq(config.excludeBuilt);
-
+				config.include = files;
 
 				//use almond to remove requirejs dependency
 				if (config.standalone) {
@@ -69,8 +59,8 @@ module.exports = function(grunt) {
 						return;
 					}
 
-					//when built without requirejs support, provide global references to
-					//every object in the whole dependency graph
+					//when built as a standalone library, provide global
+					//references to every object in the whole dependency graph
 					//var basePath = _.initial(__dirname.split('/')).join('/');
 					var deps = buildResponse.split('\n');
 					deps = _.chain(deps)

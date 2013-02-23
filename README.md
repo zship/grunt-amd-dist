@@ -21,7 +21,7 @@ grunt.loadNpmTasks('grunt-amd-dist');
 ```
 
 You can verify that the task is available by running `grunt --help` and
-checking that "dist" is under "Available tasks".
+checking that "amd-dist" is under "Available tasks".
 
 
 Usage
@@ -32,7 +32,7 @@ can contain these properties (example from
 [deferreds.js](https://github.com/zship/deferreds.js)):
 
 ```js
-dist: {
+'amd-dist': {
 	//path of the built file
 	out: 'dist/deferreds.js',
 	//remove requirejs dependency from built package (using almond)
@@ -44,16 +44,8 @@ dist: {
 	//assigned the exported modules
 	exports: 'deferreds',
 	//String or Array of files for which to trace dependencies and build
-	include: 'src/deferreds/**/*.js',
-	//exclude files from the 'include' list. Useful to add specific
-	//exceptions to globbing.
-	exclude: [],
-	//exclude files and their dependencies from the *built* source
-	//Difference from 'exclude': files in 'excludeBuilt' will be
-	//excluded even if they are dependencies of files in 'include'
-	excludeBuilt: [],
-	//exclude files from the *built* source, but keep any dependencies of the files.
-	excludeShallow: []
+	//grunt.file.expand() is called, so patterns beginning with "!" will be excluded
+	files: 'src/deferreds/**/*.js',
 },
 ```
 
@@ -66,7 +58,7 @@ property is given, the configuration in that file will be mixed-in to the
 conflicting configuration property, `requirejs` will always "win" against
 `mainConfigFile`).
 
-Once these options are in place, `grunt dist` will run grunt-amd-dist.
+Once these options are in place, `grunt amd-dist` will run grunt-amd-dist.
 
 
 ### Standalone build
@@ -74,7 +66,7 @@ Once these options are in place, `grunt dist` will run grunt-amd-dist.
 The `standalone` option will cause the built file to export an object
 containing all AMD modules which were part of the build. Depending on the `env`
 option, this returned object is assigned to `module.exports` (node) or
-`window.<config:dist.exports`. Object keys are the module names, values are the
+`window.<config:dist.exports>`. Object keys are the module names, values are the
 modules.
 
 
