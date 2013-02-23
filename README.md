@@ -33,19 +33,22 @@ grunt-amd-dist reads two sections of your config: `amd-dist` and `requirejs`.
 
 ```js
 'amd-dist': {
-	//path of the built file
-	out: 'dist/deferreds.js',
-	//remove requirejs dependency from built package (using almond)
-	standalone: true,
-	//build standalone for node or browser
-	env: 'node',
-	//env: 'browser',
-	//if env === 'browser', this is the property under `window` which is
-	//assigned the exported modules
-	exports: 'deferreds',
-	//String or Array of files for which to trace dependencies and build
-	//grunt.file.expand() is called, so patterns beginning with "!" will be excluded
-	files: 'src/deferreds/**/*.js',
+	all: {
+		options: {
+			//remove requirejs dependency from built package (almond)
+			standalone: true,
+			//build standalone for node or browser
+			env: 'node',
+			//env: 'browser',
+			exports: 'deferreds'
+		},
+		//Grunt files configuration object for which to trace dependencies
+		//(more: http://gruntjs.com/configuring-tasks)
+		files: [{
+			src: 'src/deferreds/**/*.js',
+			dest: 'dist/deferreds.js'
+		}]
+	}
 },
 ```
 
