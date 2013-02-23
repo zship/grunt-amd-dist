@@ -6,7 +6,7 @@ module.exports = function(grunt) {
 	var requirejs = require(libdir + '/r.js');
 	var util = require('./util.js');
 	var _ = require('underscore');
-	var pipe = require('deferreds.js').pipe;
+	var pipe = require('deferreds').pipe;
 	var partial = require('mout/function/partial');
 
 

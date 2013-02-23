@@ -5,7 +5,7 @@ var path = require('path');
 var grunt = require('grunt/lib/grunt.js');
 var mixin = require('mout/object/deepMixIn');
 var _ = require('underscore');
-var Deferred = require('deferreds.js').Deferred;
+var Deferred = require('deferreds').Deferred;
 
 
 var util = {
