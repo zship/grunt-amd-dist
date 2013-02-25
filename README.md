@@ -4,6 +4,8 @@ grunt-amd-dist
 grunt-amd-dist is a [grunt](http://gruntjs.com/) task to build JavaScript
 projects which use the AMD format.
 
+This plugin requires Grunt `~0.4.0`
+
 
 Installataion
 -------------

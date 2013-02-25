@@ -1,7 +1,7 @@
 module.exports = function(grunt) {
 	'use strict';
 
-	var combine = require('./combine.js');
+	var combine = require('./lib/combine.js');
 	var forEachSeries = require('deferreds').forEachSeries;
 
 

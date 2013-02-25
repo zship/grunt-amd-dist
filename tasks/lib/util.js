@@ -38,13 +38,13 @@ var util = {
 				throw new Error('requirejs config: mainConfigFile property: file cannot be found');
 			}
 
-			var requirejs = require('./lib/r.js');
+			var requirejs = require('./r.js');
 			requirejs.config({
 				baseUrl: __dirname,
 				nodeRequire: require
 			});
 
-			requirejs(['./lib/parse'], function(parse) {
+			requirejs(['./parse'], function(parse) {
 				var mainConfig = parse.findConfig(grunt.file.read(config.mainConfigFile)).config;
 				deferred.resolve(mixin({}, mainConfig, config));
 			});

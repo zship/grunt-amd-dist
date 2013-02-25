@@ -2,8 +2,8 @@
 
 var grunt = require('grunt');
 var path = require('path');
-var libdir = path.resolve(__dirname + '/lib');
-var requirejs = require(libdir + '/r.js');
+var libdir = path.resolve(__dirname);
+var requirejs = require('./r.js');
 var util = require('./util.js');
 var Deferred = require('deferreds').Deferred;
 var pipe = require('deferreds').pipe;
